@@ -18,6 +18,15 @@ struct SessionRecapView: View{
     var body: some View{
         
         NavigationStack{
+            //VStack {
+                // Stopwatch at the top
+                StopwatchView(timeEslapsed: manager.curSesh.length, isRunning: true)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 100)
+                    .padding(.bottom, 20)
+                
+                Spacer()
+            //}
             List {
                 ForEach(manager.curSesh.climbs.reversed(), id: \.self) { climb in
                     HStack {
@@ -36,7 +45,9 @@ struct SessionRecapView: View{
                 }
             }
         }
+        
     }
+    
 }
 //    struct ClimbRecap: View {
 //        var title: String
