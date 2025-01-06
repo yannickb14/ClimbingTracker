@@ -29,11 +29,13 @@ struct SessionView: View {
         NavigationStack{
             VStack {
                 // Stopwatch at the top
-                StopwatchView(timeEslapsed: 0)
-                    .frame(maxWidth: .infinity, alignment: .top)
+                StopwatchView(timeEslapsed: 0, isRunning: false)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 100)
                     .padding(.bottom, 20)
                 
                 Spacer()
+            
                 
                 // Grade input and button
                 VStack(spacing: 20) {
@@ -107,6 +109,7 @@ struct SessionView: View {
                     }
                     .id(refreshID)
                 }
+                .navigationBarBackButtonHidden(true)
                 
                 
                 Spacer()
