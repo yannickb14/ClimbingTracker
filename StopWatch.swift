@@ -12,11 +12,12 @@ import SwiftUI
 
 struct StopwatchView: View {
     @State private var timeElapsed: TimeInterval
-    @State private var isRunning = false
+    @State private var isRunning: Bool
     @State private var timer: Timer?
 
-    init(timeEslapsed: TimeInterval){
+    init(timeEslapsed: TimeInterval, isRunning: Bool){
         self.timeElapsed = timeEslapsed
+        self.isRunning = isRunning
     }
     var body: some View {
         VStack(spacing: 20) {
@@ -74,9 +75,9 @@ struct StopwatchView: View {
 //    }
 //}
 
-struct StopWatch_Preview: PreviewProvider {
-    static var previews: some View {
-
-        StopwatchView(timeEslapsed: 0)
-    }
-}
+//struct StopWatch_Preview: PreviewProvider {
+//    static var previews: some View {
+//
+//        StopwatchView(timeEslapsed: 0)
+//    }
+//}
