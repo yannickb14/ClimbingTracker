@@ -7,9 +7,22 @@
 
 import Foundation
 
-class Climb : Hashable, Identifiable {
+class Climb : Codable, Hashable, Equatable {
     
-    let id = UUID()
+    private static var CLIMBS = [Climb]().self
+    
+    public static func getClimb(name: String, grade: Grade) -> Climb{
+        let c = Climb(name: name, grade: grade)
+        for climb in CLIMBS {
+            if climb == c{
+                return climb
+            }
+        }
+        return c
+    }
+    
+   
+    
     let grade : Grade
     var attempts : Int
     var flashed : Bool
@@ -17,12 +30,15 @@ class Climb : Hashable, Identifiable {
     var name: String
     
     init(name: String, grade: Grade) {
-        self.name = name
+        grade.gradeStr = grade.gradeStr.lowercased()
+        
+        self.name = name.lowercased()
         self.grade = grade
         self.attempts = 0
         self.flashed = false
         self.tops = 0
     }
+    
     
     func attempted(topped: Bool){
         if (topped){
@@ -39,10 +55,10 @@ class Climb : Hashable, Identifiable {
         hasher.combine(grade.gradeStr)
     }
     
-    
-    static func == (lhs: Climb, rhs: Climb) -> Bool {
-        return lhs.id == rhs.id
+    static func ==(lhs: Climb, rhs: Climb) -> Bool{
+        return lhs.name == rhs.name && lhs.grade.gradeStr == rhs.grade.gradeStr
     }
+
     
   
     
