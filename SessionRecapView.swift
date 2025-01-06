@@ -38,13 +38,35 @@ struct SessionRecapView: View{
                                 .font(.system(size: 18, weight: .bold, design: .rounded))
                                 .foregroundColor(Color.blue)
                             
+                            Text("Attempts \(climb.attempts)")
+                                .font(.system(size: 16, design: .rounded))
+                                
+                            Text("Tops \(climb.tops)")
+                                .font(.system(size: 16, design: .rounded))
+                            
                             
                         }
                     }
                     
                 }
             }
+            NavigationLink("what", destination: HomeView().environmentObject(User.shared))
+            Button(action: {
+               
+                User.shared.climbs += manager.curSesh.climbs
+                User.shared.sessions.append(manager.curSesh)
+                
+            }) {
+                Text("Confirm End")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.red)
+                    .foregroundColor(.black)
+                    .cornerRadius(10)
+
+            }
         }
+        
         
     }
     
