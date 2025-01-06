@@ -131,7 +131,8 @@ struct SessionView: View {
 //                }
                 
                 
-                NavigationLink(destination: SessionRecapView(manager: manager).environmentObject(manager)){
+                NavigationLink(destination: SessionRecapView(manager: manager).environmentObject(manager))
+                {
                     Text("End session")
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -140,17 +141,6 @@ struct SessionView: View {
                         .cornerRadius(10)
 
                 }
-                
-                
-//                Button(action: endSession) {
-//                    Text("End Session")
-//                        .frame(maxWidth: .infinity)
-//                        .padding()
-//                        .background(Color.red)
-//                        .foregroundColor(.black)
-//                        .cornerRadius(10)
-//                }
-                
                 
                 .padding(.horizontal)
                 .padding(.bottom)
@@ -162,6 +152,7 @@ struct SessionView: View {
     
     // Placeholder function for handling "Add Grade" button press
     func addGrade() {
+
         manager.curSesh.climbs.append(Climb(name: name, grade: Grade(gradeStr: grade)))
         
         name = ""
@@ -197,7 +188,7 @@ struct SessionView_Previews: PreviewProvider {
     @EnvironmentObject var user: User
     static var previews: some View {
         
-        SessionView(user: User(hardestGrade: Grade(gradeStr: "v0"), name: "Yan"))
+        SessionView(user: User(hardestGrade: Grade(gradeStr: "v0")))
         
     }
 }
