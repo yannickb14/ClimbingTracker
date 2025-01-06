@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Grade: CustomStringConvertible{
+class Grade: CustomStringConvertible, Codable{
     
     var gradeStr : String
     
